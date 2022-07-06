@@ -1,16 +1,31 @@
-# Deploying Cluster Essentials v1.1
+# Deploying Cluster Essentials v1.2
 
-This document describes how to install, upgrade, and uninstall Cluster Essentials v1.1.
+This document describes how to install, upgrade, and uninstall Cluster Essentials v1.2.
 
 ## <a id='supported-platforms'></a> Supported Platforms
+
 Currently, Cluster Essentials only supports MacOS and Linux. 
 
+## <a id='supported-kube'></a> Supported Kubernetes versions
+
+Installation requires Kubernetes cluster v1.2.0, v1.21, v1.22, v1.23, or v1.24 on one of the following Kubernetes
+providers:
+
+- Azure Kubernetes Service
+- Amazon Elastic Kubernetes Service
+- Google Kubernetes Engine
+    - GKE Autopilot clusters do not have required features enabled
+- Minikube
+- Kind
+
 ## <a id='install'></a> Install
+
 If you are using a VMware Tanzu Kubernetes Grid cluster, you do not need to install Cluster Essentials because the contents of Cluster Essentials are already installed on your cluster.
 
 For all other clusters, install Cluster Essentials using the following steps.
 
 ### <a id='download'></a> Download artifacts from Tanzu Network
+
 1. Sign in to [Tanzu Network](https://network.tanzu.vmware.com).
 
 1. Go to [Cluster Essentials for VMware Tanzu](https://network.tanzu.vmware.com/products/tanzu-cluster-essentials/) on VMware Tanzu Network.
@@ -19,8 +34,8 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 1.  Select a download according to your Kubernetes provider and operating system:
 
-    - For macOS, download `tanzu-cluster-essentials-darwin-amd64-1.1.0.tgz`.
-    - For Linux, download `tanzu-cluster-essentials-linux-amd64-1.1.0.tgz`.
+    - For macOS, download `tanzu-cluster-essentials-darwin-amd64-1.2.0.tgz`.
+    - For Linux, download `tanzu-cluster-essentials-linux-amd64-1.2.0.tgz`.
 
 1. Unpack the TAR file into the `tanzu-cluster-essentials` directory:
 
@@ -48,7 +63,7 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 ### <a id='install'></a> Deploy onto cluster
 
-1. (Optional) If your registry needs a custom certificate, you must [load that configuration](https://carvel.dev/kapp-controller/docs/v0.34.0/controller-config/) into the cluster before installing `kapp-controller`. If your registry uses a public certificate, this step is not required.
+1. (Optional) If your registry needs a custom certificate, you must [load that configuration](https://carvel.dev/kapp-controller/docs/v0.38.0/controller-config/) into the cluster before installing `kapp-controller`. If your registry uses a public certificate, this step is not required.
 
    Create the `kapp-controller` namespace:
 
@@ -69,7 +84,7 @@ For all other clusters, install Cluster Essentials using the following steps.
     - For online installation, run:
 
         ```
-        export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:ab0a3539da241a6ea59c75c0743e9058511d7c56312ea3906178ec0f3491f51d
+        export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:c7c4cb124c06ca0b6a5a6c31617781fd5b4513e03df1cb49d5d19e91c7166644
         export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
         export INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
         export INSTALL_REGISTRY_PASSWORD=TANZU-NET-PASSWORD
@@ -86,7 +101,7 @@ For all other clusters, install Cluster Essentials using the following steps.
           IMGPKG_REGISTRY_USERNAME=TANZUNET-REGISTRY-USERNAME \
           IMGPKG_REGISTRY_PASSWORD=TANZUNET-REGISTRY-PASSWORD \
           imgpkg copy \
-            -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle:1.2.0 \
+            -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:c7c4cb124c06ca0b6a5a6c31617781fd5b4513e03df1cb49d5d19e91c7166644 \
             --to-tar cluster-essentials-bundle-1.2.0.tar \
             --include-non-distributable-layers
 
@@ -129,14 +144,14 @@ For all other clusters, install Cluster Essentials using the following steps.
 ## <a id='upgrade'></a> Upgrade
 Cluster Essentials components (such as `kapp-controller` and `secretgen-controller`) cannot be upgraded on clusters provisioned using VMware Tanzu Kubernetes Grid, Tanzu Community Edition, and VMware Tanzu Mission Control. 
 
-For all other clusters, if you already have Cluster Essentials 1.0 installed on your target cluster, you can upgrade to Cluster Essentials 1.1 using the following steps. Running this upgrade will update the `kapp-controller` version on your cluster to `v0.34.0` and `secretgen-controller` version to `v0.8.0`.
+For all other clusters, if you already have Cluster Essentials 1.0 installed on your target cluster, you can upgrade to Cluster Essentials 1.2 using the following steps. Running this upgrade will update the `kapp-controller` version on your cluster to `v0.38.3` and `secretgen-controller` version to `v0.9.1`.
 
 1. Follow the steps above to [Download artifacts from Tanzu Network](#download) and [Set Kubernetes cluster context](#cluster-context)
 
 1. Configure and run `install.sh`, which will install `kapp-controller` and `secretgen-controller` on your cluster:
 
     ```
-    export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:ab0a3539da241a6ea59c75c0743e9058511d7c56312ea3906178ec0f3491f51d
+    export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:c7c4cb124c06ca0b6a5a6c31617781fd5b4513e03df1cb49d5d19e91c7166644
     export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
     export INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
     export INSTALL_REGISTRY_PASSWORD=TANZU-NET-PASSWORD
