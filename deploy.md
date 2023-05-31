@@ -1,6 +1,6 @@
 # Deploying Cluster Essentials v1.2
 
-This document describes how to install, upgrade, and uninstall Cluster Essentials v1.2.
+This topic tells you how to install, upgrade, and uninstall Cluster Essentials v1.2.
 
 ## <a id='supported-kube'></a> Supported Kubernetes versions
 
