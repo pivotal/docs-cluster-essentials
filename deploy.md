@@ -27,7 +27,7 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 1. Sign in to [Tanzu Network](https://network.tanzu.vmware.com).
 
-1. Go to [Cluster Essentials for VMware Tanzu](https://network.tanzu.vmware.com/products/tanzu-cluster-essentials/) on VMware Tanzu Network.
+1. Go to [Cluster Essentials for VMware Tanzu](https://network.tanzu.vmware.com/products/tanzu-cluster-essentials/#/releases/1130414) on VMware Tanzu Network.
 
 1. Accept or confirm that you have accepted the EULA for the product
 
