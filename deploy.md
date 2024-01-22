@@ -124,6 +124,8 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 #### <a id='install-unix'></a> On macOS or Linux
 
+>**Note** If Pod Security Admission is enforced on the Kubernetes cluster (e.g. TKGs with vSphere7 and Kubernetes version >=1.26), modify `install.sh` with the steps mentioned [here](#modify-install-script-unix) to ensure that Cluster Essentials is installed successfully.
+
 Configure and run `install.sh`, which will install `kapp-controller` and `secretgen-controller` on your cluster:
 
 - For online installation, run:
@@ -236,6 +238,50 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
     ```console
     sudo cp $HOME/tanzu-cluster-essentials/imgpkg /usr/local/bin/imgpkg
     ```
+
+### <a id='modify-install-script'></a> Modify install script
+
+#### <a id='modify-install-script-unix'></a> On macOS or Linux
+
+Open the `install.sh` script, replace the last 4 lines
+
+```
+echo "## Deploying kapp-controller"
+./kapp deploy -a kapp-controller -n $ns_name -f <(./ytt -f ./bundle/kapp-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT --data-value-yaml kappController.deployment.concurrency=10 | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
+
+echo "## Deploying secretgen-controller"
+./kapp deploy -a secretgen-controller -n $ns_name -f <(./ytt -f ./bundle/secretgen-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
+
+```
+
+with following:
+
+```
+# Adding an overlay to set the seccompProfile.
+cat > "bundle/overlay.yaml" <<EOF
+#@ load("@ytt:overlay", "overlay")
+
+#@overlay/match by=overlay.subset({"kind":"Deployment"})
+---
+spec:
+  template:
+    spec:
+      containers:
+      #@overlay/match by=overlay.all, expects="0+"
+      #@overlay/match-child-defaults missing_ok=True
+      - securityContext:
+          seccompProfile:
+            type: RuntimeDefault
+EOF
+
+echo "## Deploying kapp-controller"
+./kapp deploy -a kapp-controller -n $ns_name -f <(./ytt -f ./bundle/kapp-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT --data-value-yaml kappController.deployment.concurrency=10 -f ./bundle/overlay.yaml | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
+
+echo "## Deploying secretgen-controller"
+./kapp deploy -a secretgen-controller -n $ns_name -f <(./ytt -f ./bundle/secretgen-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT -f ./bundle/overlay.yaml | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
+```
+
+and save the file.
 
 ## <a id='upgrade'></a> Upgrade
 
