@@ -7,14 +7,14 @@ This topic contains release notes for Cluster Essentials for VMware Tanzu. A new
 **Release Date**: March 29, 2024
 
 ### <a id='1-5-11-resolved-issues'></a> Resolved Issues
-* Updating **kapp-controller to v0.45.9**. This patch release addresses CVEs identified in v1.5.8. A full list of fixes can be found in the open source [release notes](https://github.com/vmware-tanzu/carvel-kapp-controller/releases/tag/v0.45.9).
+* Updating **kapp-controller to v0.45.9**. This patch release addresses CVEs identified in v1.5.10. A full list of fixes can be found in the open source [release notes](https://github.com/vmware-tanzu/carvel-kapp-controller/releases/tag/v0.45.9).
 
 ## <a id='1-5-10'></a> v1.5.10
 
 **Release Date**: February 29, 2024
 
 ### <a id='1-5-10-resolved-issues'></a> Resolved Issues
-* Updating **kapp-controller to v0.45.8**. This patch release addresses CVEs identified in v1.5.8. A full list of fixes can be found in the open source [release notes](https://github.com/vmware-tanzu/carvel-kapp-controller/releases/tag/v0.45.8).
+* Updating **kapp-controller to v0.45.8**. This patch release addresses CVEs identified in v1.5.9. A full list of fixes can be found in the open source [release notes](https://github.com/vmware-tanzu/carvel-kapp-controller/releases/tag/v0.45.8).
 
 ## <a id='1-5-9'></a> v1.5.9
 
