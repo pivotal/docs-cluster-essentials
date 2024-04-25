@@ -133,11 +133,13 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
     export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
     export INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
     export INSTALL_REGISTRY_PASSWORD=TANZU-NET-PASSWORD
+    export CA_PATH=/path/ca.crt
     cd $HOME/tanzu-cluster-essentials
     ./install.sh --yes
     ```
     
     Where `TANZU-NET-USER` and `TANZU-NET-PASSWORD` are your credentials for VMware Tanzu Network.
+    Here `CA_PATH` is optional and to be exported only when there is a need to pull the image and deploy kapp-conyroller using custom certificate provided.
 
 - For air-gapped installation: 
 
@@ -149,6 +151,7 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
     $ IMGPKG_REGISTRY_HOSTNAME=MY-REGISTRY \
       IMGPKG_REGISTRY_USERNAME=MY-REGISTRY-USER \
       IMGPKG_REGISTRY_PASSWORD=MY-REGISTRY-PASSWORD \
+      CA_PATH=/path/ca.crt \
       ./imgpkg copy \
         --tar cluster-essentials-bundle-1.9.0.tar \
         --to-repo MY-REGISTRY/cluster-essentials-bundle \
@@ -169,6 +172,7 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
     - `MY-REGISTRY` is your air-gapped container registry.
     - `MY-REGISTRY-USER` is the user with write access to `MY-REGISTRY`.
     - `MY-REGISTRY-PASSWORD` is the password for `MY-REGISTRY-USER`.
+    - `CA_PATH` is optional and if exported it will pull image and deploy kapp-controller using the custom CA certificate provided. 
 
 #### <a id='install-windows'></a> On Windows
 
@@ -184,11 +188,12 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
     set INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
     set /p INSTALL_REGISTRY_PASSWORD=password:
     :: Interactively enter TANZU-NET-PASSWORD
-
+    set CA_PATH=/path/ca.crt
     install.bat
     ```
 
     Where `TANZU-NET-USER` and `TANZU-NET-PASSWORD` are your credentials for VMware Tanzu Network.
+    Here `CA_PATH` is optional and to be exported only when there is a need to pull the image and deploy kapp-conyroller using custom certificate provided.
 
 - For air-gapped installation: 
 
@@ -201,6 +206,7 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
     set IMGPKG_REGISTRY_USERNAME=MY-REGISTRY-USER
     set IMGPKG_REGISTRY_PASSWORD=password:
     :: Interactive enter MY-REGISTRY-PASSWORD
+    set CA_PATH=/path/ca.crt
     imgpkg copy ^
       --tar cluster-essentials-bundle-1.9.0.tar ^
       --to-repo MY-REGISTRY/cluster-essentials-bundle ^
@@ -222,6 +228,7 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
     - `MY-REGISTRY` is your air-gapped container registry.
     - `MY-REGISTRY-USER` is the user with write access to `MY-REGISTRY`.
     - `MY-REGISTRY-PASSWORD` is the password for `MY-REGISTRY-USER`.
+    - `CA_PATH` is optional and if exported it will pull image and deploy kapp-controller using the custom CA certificate provided.
 
 ### <a id='cli-install'></a> Optionally install CLIs onto your `$PATH`
 
