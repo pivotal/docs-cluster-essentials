@@ -21,7 +21,7 @@ This topic contains release notes for Cluster Essentials for VMware Tanzu. A new
   [secretgen-controller release notes](https://github.com/carvel-dev/secretgen-controller/releases/tag/v0.17.2).
 
 - Updates Carvel CLIs:
-    * imgpkg to v0.42.0. See the [imgpkg release notes](https://github.com/carvel-dev/imgpkg/releases/tag/v0.42.0).
-    * kapp to v0.62.0. See the [kapp release notes](https://github.com/carvel-dev/kapp/releases/tag/v0.62.0).
-    * kbld to v0.43.0.
-    * ytt to v0.49.0.
+    - imgpkg to v0.42.0. See the [imgpkg release notes](https://github.com/carvel-dev/imgpkg/releases/tag/v0.42.0).
+    - kapp to v0.62.0. See the [kapp release notes](https://github.com/carvel-dev/kapp/releases/tag/v0.62.0).
+    - kbld to v0.43.0. See the [kbld release notes](https://github.com/carvel-dev/kbld/releases/tag/v0.43.0).
+    - ytt to v0.49.0. See the [ytt release notes](https://github.com/carvel-dev/ytt/releases/tag/v0.49.0).
