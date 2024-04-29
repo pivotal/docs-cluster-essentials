@@ -328,9 +328,6 @@ Finished unsuccessfully (Deployment is not progressing: ProgressDeadlineExceeded
 1. Locate the following code in `install.sh`:
 
     ```console
-    echo "## Deploying kapp-controller"
-    ./kapp deploy -a kapp-controller -n $ns_name -f <(./ytt -f ./bundle/kapp-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT --data-value-yaml kappController.deployment.concurrency=10 | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
-
     echo "## Deploying secretgen-controller"
     ./kapp deploy -a secretgen-controller -n $ns_name -f <(./ytt -f ./bundle/secretgen-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
     ```
@@ -354,9 +351,6 @@ Finished unsuccessfully (Deployment is not progressing: ProgressDeadlineExceeded
               seccompProfile:
                 type: RuntimeDefault
     EOF
-
-    echo "## Deploying kapp-controller"
-    ./kapp deploy -a kapp-controller -n $ns_name -f <(./ytt -f ./bundle/kapp-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT --data-value-yaml kappController.deployment.concurrency=10 -f ./bundle/overlay.yaml | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
 
     echo "## Deploying secretgen-controller"
     ./kapp deploy -a secretgen-controller -n $ns_name -f <(./ytt -f ./bundle/secretgen-controller/config/ -f ./bundle/registry-creds/ --data-values-env YTT -f ./bundle/overlay.yaml | ./kbld -f- -f ./bundle/.imgpkg/images.yml) "$@"
