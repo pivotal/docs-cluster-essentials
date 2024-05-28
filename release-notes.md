@@ -2,6 +2,18 @@
 
 This topic contains release notes for Cluster Essentials for VMware Tanzu. A new minor release for Cluster Essentials is publish every quarter. Monthly patch releases are published to address critical bugs and CVEs, if there are any.
 
+## <a id='1-8-3'></a> v1.8.3
+
+**Release Date**: May 29, 2024
+
+### <a id='1-8-3-resolved-issues'></a> Resolved Issues
+
+- Updates **kapp-controller to v0.50.4**. For a full list of new features, see the
+  [kapp-controller release notes](https://github.com/carvel-dev/kapp-controller/releases/tag/v0.50.4).
+
+- Updates **secretgen-controller to v0.16.3**. For a full list of new features, see the
+  [secretgen-controller release notes](https://github.com/carvel-dev/secretgen-controller/releases/tag/v0.16.3).
+
 ## <a id='1-8-2'></a> v1.8.2
 
 **Release Date**: April 30, 2024
