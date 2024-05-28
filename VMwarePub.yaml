@@ -3,8 +3,8 @@ publication:
     OutputFileName: cluster-essentials
     PublicationName: Cluster Essentials for VMware Tanzu
     ProductName: Cluster Essentials for VMware Tanzu
-    ProductVersion: 1.7.6
-    PublicationVersion: 1.7.6
+    ProductVersion: 1.7.7
+    PublicationVersion: 1.7.7
     PublicationVersionComments: Cluster Essentials for VMware Tanzu
     Language: en
     PublicationGuid: id
