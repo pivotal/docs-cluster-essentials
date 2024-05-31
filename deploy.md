@@ -26,15 +26,15 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 ### <a id='download'></a> Download artifacts from support.broadcom.com
 
-1. Sign in to [support.broadcom.com](https://support.broadcom.com).
+1. Sign in to the [Broadcom Support Portal](https://support.broadcom.com).
 
 1. Go to [Tanzu Application Platform - components](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Tanzu%20Application%20Platform%20(TAP)%20-%20Components) in Tanzu -> My Downloads.
 
-1. Expand Cluster Essentials for VMWare Tanzu and click on release 1.6.10
+1. Expand the **Cluster Essentials for VMWare Tanzu** section, and click on release `1.6.10`.
 
-1. Check "I agree to Terms and Conditions"
+1. Select the **I agree to Terms and Conditions** checkbox.
 
-1.  Select a download according to your Kubernetes provider and operating system:
+1. Choose a download according to your Kubernetes provider and operating system:
 
     - For macOS, download `tanzu-cluster-essentials-darwin-amd64-1.6.10.tgz`.
     - For Linux, download `tanzu-cluster-essentials-linux-amd64-1.6.10.tgz`.
@@ -98,7 +98,7 @@ For all other clusters, install Cluster Essentials using the following steps.
     kubectl config get-contexts
     ```
 
-1.  Set the context to the cluster that you want to use for the Cluster Essentials install.
+1. Set the context to the cluster that you want to use for the Cluster Essentials install.
 
     ```console
     kubectl config use-context CONTEXT-NAME
@@ -123,7 +123,7 @@ If your registry uses a public certificate, these steps are not required.
     kubectl create namespace kapp-controller
     ```
 
-2.  Create a configuration secret by using the registry's `ca.crt` stored on local disk:
+2. Create a configuration secret by using the registry's `ca.crt` stored on local disk:
 
     ```console
     kubectl create secret generic kapp-controller-config \
@@ -146,7 +146,7 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
     ./install.sh --yes
     ```
 
-    Where `BROADCOM-USER` and `BROACOM-PASSWORD` are your credentials for Broadcom registry.
+    Where `BROADCOM-USER` and `BROADCOM-PASSWORD` are your credentials for Broadcom registry.
 
 - For air-gapped installation:
 
@@ -197,7 +197,7 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
     install.bat
     ```
 
-    Where `BROADCOM-USER` and `BROACOM-PASSWORD` are your credentials for Broadcom registry.
+    Where `BROADCOM-USER` and `BROADCOM-PASSWORD` are your credentials for Broadcom registry.
 
 - For air-gapped installation:
 
@@ -283,7 +283,7 @@ For all other clusters, if you already have Cluster Essentials 1.0+ installed on
     install.bat
     ```
 
-    Where `BROADCOM-USER` and `BROACOM-PASSWORD` are your credentials for Broadcom registry.
+    Where `BROADCOM-USER` and `BROADCOM-PASSWORD` are your credentials for Broadcom registry.
 
 1. Follow the [steps above](#cli-install) to optionally install newer versions of the `kapp` and `imgpkg` CLIs to your path
 
