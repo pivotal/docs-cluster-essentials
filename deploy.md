@@ -24,13 +24,15 @@ If you are using a VMware Tanzu Kubernetes Grid cluster, you do not need to inst
 
 For all other clusters, install Cluster Essentials using the following steps.
 
-### <a id='download'></a> Download artifacts from Tanzu Network
+### <a id='download'></a> Download artifacts from support.broadcom.com
 
-1. Sign in to [Tanzu Network](https://network.tanzu.vmware.com).
+1. Sign in to [support.broadcom.com](https://support.broadcom.com).
 
-1. Go to [Cluster Essentials for VMware Tanzu](https://network.tanzu.vmware.com/products/tanzu-cluster-essentials/) on VMware Tanzu Network.
+1. Go to [Cluster Essentials for VMware Tanzu](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Cluster+Essentials+for+VMware+Tanzu) in Tanzu -> My Downloads.
 
-1. Accept or confirm that you have accepted the EULA for the product
+1. Expand Cluster Essentials for VMWare Tanzu and click on release 1.6.10
+
+1. Check "I agree to Terms and Conditions"
 
 1.  Select a download according to your Kubernetes provider and operating system:
 
@@ -64,11 +66,11 @@ For all other clusters, install Cluster Essentials using the following steps.
     ```console
     $ cd tanzu-cluster-essentials
 
-    $ IMGPKG_REGISTRY_HOSTNAME=registry.tanzu.vmware.com \
-      IMGPKG_REGISTRY_USERNAME=TANZUNET-REGISTRY-USERNAME \
-      IMGPKG_REGISTRY_PASSWORD=TANZUNET-REGISTRY-PASSWORD \
+    $ IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com \
+      IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME \
+      IMGPKG_REGISTRY_PASSWORD=BROADCOM-REGISTRY-PASSWORD \
       ./imgpkg copy \
-        -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e \
+        -b registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg \
         --to-tar cluster-essentials-bundle-1.9.0.tar \
         --include-non-distributable-layers
     ```
@@ -78,12 +80,12 @@ For all other clusters, install Cluster Essentials using the following steps.
     ```console
     cd tanzu-cluster-essentials
 
-    set IMGPKG_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
-    set IMGPKG_REGISTRY_USERNAME=TANZUNET-REGISTRY-USERNAME
+    set IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+    set IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
     set /p IMGPKG_REGISTRY_PASSWORD=password:
-    :: Interactively enter TANZUNET-REGISTRY-PASSWORD
+    :: Interactively enter BROADCOM-REGISTRY-PASSWORD
     imgpkg copy ^
-      -b registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e ^
+      -b registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg ^
       --to-tar cluster-essentials-bundle-1.9.0.tar ^
       --include-non-distributable-layers
     ```
@@ -136,10 +138,10 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
 - For online installation, run:
 
     ```console
-    export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e
-    export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
-    export INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
-    export INSTALL_REGISTRY_PASSWORD=TANZU-NET-PASSWORD
+    export INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
+    export INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+    export INSTALL_REGISTRY_USERNAME=BROADCOM-USER
+    export INSTALL_REGISTRY_PASSWORD=BROADCOM-PASSWORD
     export CA_PATH=/PATH-TO-CA-CERT/ca.crt
     cd $HOME/tanzu-cluster-essentials
     ./install.sh --yes
@@ -147,7 +149,7 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
 
     Where:
 
-    - `TANZU-NET-USER` and `TANZU-NET-PASSWORD` are your credentials for VMware Tanzu Network.
+    - `BROADCOM-USER` and `BROACOM-PASSWORD` are your credentials for Broadcom registry.
     - `PATH-TO-CA-CERT` is the location of your custom CA certificate.
 
         > **Note** `CA_PATH` is only required if your registry needs the custom certificate you optionally
@@ -170,7 +172,7 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
         --include-non-distributable-layers \
         --registry-ca-cert-path CA_PATH
 
-    $ INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e \
+    $ INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:639fc3f3d3ec9bd215a287915c21505b12e0deaedb9af0b1950b0ef5c1d6b472.imgpkg \
       INSTALL_REGISTRY_HOSTNAME=MY-REGISTRY \
       INSTALL_REGISTRY_USERNAME=MY-REGISTRY-USER \
       INSTALL_REGISTRY_PASSWORD=MY-REGISTRY-PASSWORD \
@@ -179,8 +181,8 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
 
     Where:
 
-    - `TANZUNET-REGISTRY-USERNAME` is your username of the VMware Tanzu Network.
-    - `TANZUNET-REGISTRY-PASSWORD` is your password of the VMware Tanzu Network.
+    - `BROADCOM-REGISTRY-USERNAME` is your username of the Broadcom registry.
+    - `BROADCOM-REGISTRY-PASSWORD` is your token of the Broadcom registry.
     - `MY-REGISTRY` is your air-gapped container registry.
     - `MY-REGISTRY-USER` is the user with write access to `MY-REGISTRY`.
     - `MY-REGISTRY-PASSWORD` is the password for `MY-REGISTRY-USER`.
@@ -199,18 +201,18 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
     ```console
     cd tanzu-cluster-essentials
 
-    set INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e
-    set INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
-    set INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
+    set INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
+    set INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+    set INSTALL_REGISTRY_USERNAME=BROADCOM-USER
     set /p INSTALL_REGISTRY_PASSWORD=password:
-    :: Interactively enter TANZU-NET-PASSWORD
+    :: Interactively enter BROADCOM-PASSWORD
     set CA_PATH=/PATH-TO-CA-CERT/ca.crt
     install.bat
     ```
 
     Where:
 
-    - `TANZU-NET-USER` and `TANZU-NET-PASSWORD` are your credentials for VMware Tanzu Network.
+    - `BROADCOM-USER` and `BROACOM-PASSWORD` are your credentials for Broadcom registry.
     - `PATH-TO-CA-CERT` is the location of your custom CA certificate.
 
         > **Note** `CA_PATH` is only required if your registry needs the custom certificate you
@@ -234,7 +236,7 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
       --include-non-distributable-layers ^
       --registry-ca-cert-path CA_PATH
 
-    set INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e
+    set INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:639fc3f3d3ec9bd215a287915c21505b12e0deaedb9af0b1950b0ef5c1d6b472.imgpkg
     set INSTALL_REGISTRY_HOSTNAME=MY-REGISTRY
     set INSTALL_REGISTRY_USERNAME=MY-REGISTRY-USER
     set /p INSTALL_REGISTRY_PASSWORD=password:
@@ -244,8 +246,8 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
 
     Where:
 
-    - `TANZUNET-REGISTRY-USERNAME` is your username of the VMware Tanzu Network.
-    - `TANZUNET-REGISTRY-PASSWORD` is your password of the VMware Tanzu Network.
+    - `BROADCOM-REGISTRY-USERNAME` is your username of the Broadcom registry.
+    - `BROADCOM-REGISTRY-PASSWORD` is your password of the Broadcom registry.
     - `MY-REGISTRY` is your air-gapped container registry.
     - `MY-REGISTRY-USER` is the user with write access to `MY-REGISTRY`.
     - `MY-REGISTRY-PASSWORD` is the password for `MY-REGISTRY-USER`.
@@ -274,7 +276,7 @@ Cluster Essentials components (such as `kapp-controller` and `secretgen-controll
 
 For all other clusters, if you already have Cluster Essentials 1.0+ installed on your target cluster, you can upgrade to Cluster Essentials 1.9 using the following steps. Running this upgrade will update the `kapp-controller` version on your cluster to `v0.51.0` and `secretgen-controller` version to `v0.17.2`.
 
-1. Follow the steps above to [Download artifacts from Tanzu Network](#download) and [Set Kubernetes cluster context](#cluster-context)
+1. Follow the steps above to [Download artifacts from support.broadcom.com](#download) and [Set Kubernetes cluster context](#cluster-context)
 
 1. Configure and run `install.sh`, which will install `kapp-controller` and `secretgen-controller` on your cluster:
 
@@ -283,10 +285,10 @@ For all other clusters, if you already have Cluster Essentials 1.0+ installed on
     ```console
     cd $HOME/tanzu-cluster-essentials
 
-    export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e
-    export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
-    export INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
-    export INSTALL_REGISTRY_PASSWORD=TANZU-NET-PASSWORD
+    export INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
+    export INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+    export INSTALL_REGISTRY_USERNAME=BROADCOM-USER
+    export INSTALL_REGISTRY_PASSWORD=BROADCOM-PASSWORD
 
     ./install.sh --yes
     ```
@@ -296,16 +298,16 @@ For all other clusters, if you already have Cluster Essentials 1.0+ installed on
     ```console
     cd tanzu-cluster-essentials
 
-    set INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e
-    set INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
-    set INSTALL_REGISTRY_USERNAME=TANZU-NET-USER
+    set INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
+    set INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+    set INSTALL_REGISTRY_USERNAME=BROADCOM-USER
     set /p INSTALL_REGISTRY_PASSWORD=password:
-    :: Interactively enter TANZU-NET-PASSWORD
+    :: Interactively enter BROADCOM-PASSWORD
 
     install.bat
     ```
 
-    Where `TANZU-NET-USER` and `TANZU-NET-PASSWORD` are your credentials for VMware Tanzu Network.
+    Where `BROADCOM-USER` and `BROACOM-PASSWORD` are your credentials for Broadcom registry.
 
 1. Follow the [steps above](#cli-install) to optionally install newer versions of the `kapp` and `imgpkg` CLIs to your path
 
