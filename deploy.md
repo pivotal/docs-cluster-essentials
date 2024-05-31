@@ -24,15 +24,15 @@ If you are using a VMware Tanzu Kubernetes Grid cluster, you do not need to inst
 
 For all other clusters, install Cluster Essentials using the following steps.
 
-### <a id='download'></a> Download artifacts from support.broadcom.com
+### <a id='download'></a> Download artifacts from the Broadcom Support Portal
 
 1. Sign in to the [Broadcom Support Portal](https://support.broadcom.com).
 
 1. Go to [Cluster Essentials for VMware Tanzu](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Cluster+Essentials+for+VMware+Tanzu) in Tanzu -> My Downloads.
 
-1. Expand the **Cluster Essentials for VMWare Tanzu** section, and click on release `1.6.10`.
+1. Expand the **Cluster Essentials for VMWare Tanzu** section, and click release `1.6.10`.
 
-1. Select the **I agree to Terms and Conditions** checkbox.
+1. Select the **I agree to Terms and Conditions** check box.
 
 1. Choose a download according to your Kubernetes provider and operating system:
 
@@ -133,7 +133,7 @@ If your registry uses a public certificate, these steps are not required.
 
 #### <a id='install-unix'></a> Deploy using macOS or Linux
 
-Configure and run `install.sh`, which will install `kapp-controller` and `secretgen-controller` on your cluster:
+Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-controller` on your cluster:
 
 - For online installation, run:
 
@@ -157,7 +157,7 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
 
 - For air-gapped installation:
 
-    Upload the previously downloaded bundle to the air gapped registry and install Cluster Essentials by running:
+    Upload the previously downloaded bundle to the air-gapped registry and install Cluster Essentials by running:
 
     ```console
     $ cd tanzu-cluster-essentials
@@ -194,7 +194,7 @@ Configure and run `install.sh`, which will install `kapp-controller` and `secret
 
 #### <a id='install-windows'></a> Deploy using Windows
 
-Configure and run `install.bat`, which will install `kapp-controller` and `secretgen-controller` on your cluster:
+Configure and run `install.bat`, which installs `kapp-controller` and `secretgen-controller` on your cluster:
 
 - For online installation, run:
 
@@ -220,7 +220,7 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
 
 - For air-gapped installation:
 
-    Upload the previously downloaded bundle to the air gapped registry and install Cluster Essentials by running:
+    Upload the previously downloaded bundle to the air-gapped registry and install Cluster Essentials by running:
 
     ```console
     cd tanzu-cluster-essentials
@@ -256,15 +256,15 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
         > **Note** `CA_PATH` is only required if your registry needs the custom certificate you
         > provided earlier to pull the image and deploy kapp-controller.
 
-### <a id='cli-install'></a> Optionally install CLIs onto your `$PATH`
+### <a id='cli-install'></a> (Optional) Install CLIs onto your `$PATH`
 
-1. (Optional) Several Tanzu products, such as Tanzu Application Platform, use the `kapp` CLI to deploy. For convenience, you may install the `kapp` CLI onto your `$PATH`:
+1. (Optional) Several Tanzu products, such as Tanzu Application Platform, use the `kapp` CLI to deploy. For convenience, you can install the `kapp` CLI onto your `$PATH`:
 
     ```console
     sudo cp $HOME/tanzu-cluster-essentials/kapp /usr/local/bin/kapp
     ```
 
-1. (Optional) Several Tanzu products, such as Tanzu Application Platform, use the `imgpkg` CLI to relocate packages. For convenience, you may install the `imgpkg` CLI onto your `$PATH`:
+1. (Optional) Several Tanzu products, such as Tanzu Application Platform, use the `imgpkg` CLI to relocate packages. For convenience, you can install the `imgpkg` CLI onto your `$PATH`:
 
     ```console
     sudo cp $HOME/tanzu-cluster-essentials/imgpkg /usr/local/bin/imgpkg
@@ -274,11 +274,14 @@ Configure and run `install.bat`, which will install `kapp-controller` and `secre
 
 Cluster Essentials components (such as `kapp-controller` and `secretgen-controller`) cannot be upgraded on clusters provisioned using VMware Tanzu Kubernetes Grid and VMware Tanzu Mission Control.
 
-For all other clusters, if you already have Cluster Essentials 1.0+ installed on your target cluster, you can upgrade to Cluster Essentials 1.9 using the following steps. Running this upgrade will update the `kapp-controller` version on your cluster to `v0.51.0` and `secretgen-controller` version to `v0.17.2`.
+For all other clusters, if you already have Cluster Essentials v1.0 or later installed on your target
+cluster, you can upgrade to Cluster Essentials v1.9 using the following steps.
+Running this upgrade updates the `kapp-controller` version on your cluster to `v0.51.0` and `secretgen-controller` version to `v0.17.2`.
 
-1. Follow the steps above to [Download artifacts from support.broadcom.com](#download) and [Set Kubernetes cluster context](#cluster-context)
+1. Follow the steps in [Download artifacts from the Broadcom Support Portal](#download) and
+  [Set Kubernetes cluster context](#cluster-context).
 
-1. Configure and run `install.sh`, which will install `kapp-controller` and `secretgen-controller` on your cluster:
+1. Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-controller` on your cluster:
 
     On macOS or Linux:
 
@@ -309,7 +312,8 @@ For all other clusters, if you already have Cluster Essentials 1.0+ installed on
 
     Where `BROADCOM-USER` and `BROADCOM-PASSWORD` are your credentials for Broadcom registry.
 
-1. Follow the [steps above](#cli-install) to optionally install newer versions of the `kapp` and `imgpkg` CLIs to your path
+1. (Optional) Follow the steps in [Install CLIs onto your $PATH](#cli-install) to install newer
+   versions of the `kapp` and `imgpkg` CLIs to your path.
 
 ### <a id='upgrade-rollback'></a> Rollback
 
@@ -323,9 +327,9 @@ To rollback to the previously installed version, follow the previous version of 
 
 >**Caution** You must uninstall all the Custom Resources created by `kapp-controller` and `secretgen-controller` before running the uninstall script for Cluster Essentials.
 
-1. Follow the steps above to [Set Kubernetes cluster context](#cluster-context)
+1. Follow the steps in [Set Kubernetes cluster context](#cluster-context).
 
-1. Run `uninstall.sh`, which will uninstall `kapp-controller` and `secretgen-controller` on your cluster:
+1. Run `uninstall.sh`, which uninstalls `kapp-controller` and `secretgen-controller` on your cluster:
 
     On macOS or Linux:
 
