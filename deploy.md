@@ -28,11 +28,27 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 1. Sign in to the [Broadcom Support Portal](https://support.broadcom.com).
 
-1. Go to [Cluster Essentials for VMware Tanzu](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Cluster+Essentials+for+VMware+Tanzu) in Tanzu -> My Downloads.
+1. Go to [Cluster Essentials for VMware Tanzu](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Cluster+Essentials+for+VMware+Tanzu) in Tanzu > My Downloads.
 
 1. Expand the **Cluster Essentials for VMWare Tanzu** section, and click release `1.6.10`.
 
 1. Select the **I agree to Terms and Conditions** check box.
+
+1. Retrieve your Broadcom registry API token:
+
+    1. Click the Token Download icon next to the Cluster Essentials version you want to
+       download.
+
+       <!-- ![Screenshot of the Cluster Essentials download page in the Broadcom Support Portal with the Token Download icon highlighted.](images/download-token-icon.png) -->
+
+    1. Follow the instructions in the dialog box. Save the token as a variable named
+       `MY_BROADCOM_SUPPORT_ACCESS_TOKEN`. For example:
+
+        ```console
+        export MY_BROADCOM_SUPPORT_ACCESS_TOKEN=API-TOKEN
+        ```
+
+        Where `API-TOKEN` is your token from the Broadcom Support Portal.
 
 1. Choose a download according to your Kubernetes provider and operating system:
 
@@ -42,53 +58,61 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 1. Unpack the TAR file into the `tanzu-cluster-essentials` directory:
 
-    On macOS or Linux:
+    - On macOS or Linux:
 
-    ```console
-    mkdir $HOME/tanzu-cluster-essentials
-    tar -xvf DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE -C $HOME/tanzu-cluster-essentials
-    ```
+        ```console
+        mkdir $HOME/tanzu-cluster-essentials
+        tar -xvf DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE -C $HOME/tanzu-cluster-essentials
+        ```
 
-    On Windows (in "Command Prompt" app):
+        Where `DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE` is the name of the bundle you downloaded.
 
-    ```console
-    :: Ensure you are in the directory where you have downloaded DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE
-    mkdir tanzu-cluster-essentials
-    tar -xvf DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE -C tanzu-cluster-essentials
-    ```
+    - On Windows, in Command Prompt:
 
-    Where `DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE` is the name of the bundle you downloaded.
+        ```console
+        :: Ensure you are in the directory where you have downloaded DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE
+        mkdir tanzu-cluster-essentials
+        tar -xvf DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE -C tanzu-cluster-essentials
+        ```
+
+        Where `DOWNLOADED-CLUSTER-ESSENTIALS-BUNDLE` is the name of the bundle you downloaded.
 
 1. For air-gapped installation, download the bundle:
 
-    On macOS or Linux:
+    - On macOS or Linux:
 
-    ```console
-    $ cd tanzu-cluster-essentials
+        ```console
+        $ cd tanzu-cluster-essentials
 
-    $ IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com \
-      IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME \
-      IMGPKG_REGISTRY_PASSWORD=BROADCOM-REGISTRY-PASSWORD \
-      ./imgpkg copy \
-        -b registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg \
-        --to-tar cluster-essentials-bundle-1.7.7.tar \
-        --include-non-distributable-layers
-    ```
+        $ IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com \
+          IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME \
+          IMGPKG_REGISTRY_PASSWORD=${MY_BROADCOM_SUPPORT_ACCESS_TOKEN} \
+          ./imgpkg copy \
+            -b registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg \
+            --to-tar cluster-essentials-bundle-1.7.7.tar \
+            --include-non-distributable-layers
+        ```
 
-    On Windows (in "Command Prompt" app):
+        <!-- Commands begins with $. Is there any reason for this? Should these commands begin with `export`? -->
 
-    ```console
-    cd tanzu-cluster-essentials
+        Where `BROADCOM-REGISTRY-USERNAME` is your username for Broadcom registry.
 
-    set IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com
-    set IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
-    set /p IMGPKG_REGISTRY_PASSWORD=password:
-    :: Interactively enter BROADCOM-REGISTRY-PASSWORD
-    imgpkg copy ^
-      -b registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg ^
-      --to-tar cluster-essentials-bundle-1.7.7.tar ^
-      --include-non-distributable-layers
-    ```
+    - On Windows, in Command Prompt:
+
+        ```console
+        cd tanzu-cluster-essentials
+
+        set IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+        set IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
+        set /p IMGPKG_REGISTRY_PASSWORD=password:
+        :: Interactively enter $MY_BROADCOM_SUPPORT_ACCESS_TOKEN
+        imgpkg copy ^
+          -b registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg ^
+          --to-tar cluster-essentials-bundle-1.7.7..tar ^
+          --include-non-distributable-layers
+        ```
+
+        Where `BROADCOM-REGISTRY-USERNAME` is your username for Broadcom registry.
 
 ### <a id='cluster-context'></a> Set Kubernetes cluster context
 
@@ -140,13 +164,13 @@ Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-
     ```console
     export INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
     export INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
-    export INSTALL_REGISTRY_USERNAME=BROADCOM-USER
-    export INSTALL_REGISTRY_PASSWORD=BROADCOM-PASSWORD
+    export INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
+    export INSTALL_REGISTRY_PASSWORD=${MY_BROADCOM_SUPPORT_ACCESS_TOKEN}
     cd $HOME/tanzu-cluster-essentials
     ./install.sh --yes
     ```
 
-    Where `BROADCOM-USER` and `BROADCOM-PASSWORD` are your credentials for Broadcom registry.
+    Where `BROADCOM-REGISTRY-USERNAME` is your username for Broadcom registry.
 
 - For air-gapped installation:
 
@@ -170,11 +194,10 @@ Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-
       INSTALL_REGISTRY_PASSWORD=MY-REGISTRY-PASSWORD \
       ./install.sh
     ```
+    <!-- Commands begins with $. Is there any reason for this? Should these commands begin with `export`? -->
 
     Where:
 
-    - `BROADCOM-REGISTRY-USERNAME` is your username of the Broadcom registry.
-    - `BROADCOM-REGISTRY-PASSWORD` is your token of the Broadcom registry.
     - `MY-REGISTRY` is your air-gapped container registry.
     - `MY-REGISTRY-USER` is the user with write access to `MY-REGISTRY`.
     - `MY-REGISTRY-PASSWORD` is the password for `MY-REGISTRY-USER`.
@@ -190,14 +213,14 @@ Configure and run `install.bat`, which installs `kapp-controller` and `secretgen
 
     set INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
     set INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
-    set INSTALL_REGISTRY_USERNAME=BROADCOM-USER
+    set INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
     set /p INSTALL_REGISTRY_PASSWORD=password:
-    :: Interactively enter BROADCOM-PASSWORD
+    :: Interactively enter $MY_BROADCOM_SUPPORT_ACCESS_TOKEN
 
     install.bat
     ```
 
-    Where `BROADCOM-USER` and `BROADCOM-PASSWORD` are your credentials for Broadcom registry.
+    Where `BROADCOM-REGISTRY-USERNAME` is your username for Broadcom registry.
 
 - For air-gapped installation:
 
@@ -226,8 +249,6 @@ Configure and run `install.bat`, which installs `kapp-controller` and `secretgen
 
     Where:
 
-    - `BROADCOM-REGISTRY-USERNAME` is your username of the Broadcom registry.
-    - `BROADCOM-REGISTRY-PASSWORD` is your password of the Broadcom registry.
     - `MY-REGISTRY` is your air-gapped container registry.
     - `MY-REGISTRY-USER` is the user with write access to `MY-REGISTRY`.
     - `MY-REGISTRY-PASSWORD` is the password for `MY-REGISTRY-USER`.
@@ -259,34 +280,36 @@ Running this upgrade updates the `kapp-controller` version on your cluster to `v
 
 1. Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-controller` on your cluster:
 
-    On macOS or Linux:
+    - On macOS or Linux:
 
-    ```console
-    cd $HOME/tanzu-cluster-essentials
+        ```console
+        cd $HOME/tanzu-cluster-essentials
 
-    export INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
-    export INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
-    export INSTALL_REGISTRY_USERNAME=BROADCOM-USER
-    export INSTALL_REGISTRY_PASSWORD=BROADCOM-PASSWORD
+        export INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
+        export INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+        export INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
+        export INSTALL_REGISTRY_PASSWORD=${MY_BROADCOM_SUPPORT_ACCESS_TOKEN}
 
-    ./install.sh --yes
-    ```
+        ./install.sh --yes
+        ```
 
-    On Windows (in "Command Prompt" app):
+        Where `BROADCOM-REGISTRY-USERNAME` is your username for Broadcom registry.
 
-    ```console
-    cd tanzu-cluster-essentials
+    - On Windows, in Command Prompt:
 
-    set INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
-    set INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
-    set INSTALL_REGISTRY_USERNAME=BROADCOM-USER
-    set /p INSTALL_REGISTRY_PASSWORD=password:
-    :: Interactively enter BROADCOM-PASSWORD
+        ```console
+        cd tanzu-cluster-essentials
 
-    install.bat
-    ```
+        set INSTALL_BUNDLE=registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg
+        set INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+        set INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
+        set /p INSTALL_REGISTRY_PASSWORD=password:
+        :: Interactively enter $MY_BROADCOM_SUPPORT_ACCESS_TOKEN
 
-    Where `BROADCOM-USER` and `BROADCOM-PASSWORD` are your credentials for Broadcom registry.
+        install.bat
+        ```
+
+        Where `BROADCOM-REGISTRY-USERNAME` is your username for Broadcom registry.
 
 1. (Optional) Follow the steps in [Install CLIs onto your $PATH](#cli-install) to install newer
    versions of the `kapp` and `imgpkg` CLIs to your path.
