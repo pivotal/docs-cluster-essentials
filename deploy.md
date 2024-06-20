@@ -39,7 +39,7 @@ For all other clusters, install Cluster Essentials using the following steps.
     1. Click the Token Download icon next to the Cluster Essentials version you want to
        download.
 
-       <!-- ![Screenshot of the Cluster Essentials download page in the Broadcom Support Portal with the Token Download icon highlighted.](images/download-token-icon.png) -->
+        ![Screenshot of the Cluster Essentials download page in the Broadcom Support Portal with the Token Download icon highlighted.](images/download-token-icon.png)
 
     1. Follow the instructions in the dialog box. Save the token as a variable named
        `MY_BROADCOM_SUPPORT_ACCESS_TOKEN`. For example:
