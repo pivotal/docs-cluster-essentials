@@ -28,7 +28,7 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 1. Sign in to the [Broadcom Support Portal](https://support.broadcom.com).
 
-1. Go to [Tanzu Application Platform - components](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Tanzu%20Application%20Platform%20(TAP)%20-%20Components) in Tanzu > My Downloads.
+1. Go to [Cluster Essentials for VMware Tanzu](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Cluster+Essentials+for+VMware+Tanzu) in Tanzu > My Downloads.
 
 1. Expand the **Cluster Essentials for VMWare Tanzu** section, and click release `1.6.10`.
 
