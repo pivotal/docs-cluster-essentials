@@ -108,7 +108,7 @@ For all other clusters, install Cluster Essentials using the following steps.
         :: Interactively enter $MY_BROADCOM_SUPPORT_ACCESS_TOKEN
         imgpkg copy ^
           -b registry.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle:sha256-17bf1a8f17f96c222609b1824f8df605f0b32fa6a1910f117dbef4dc6f6cf58e.imgpkg ^
-          --to-tar cluster-essentials-bundle-1.7.7..tar ^
+          --to-tar cluster-essentials-bundle-1.7.7.tar ^
           --include-non-distributable-layers
         ```
 
