@@ -32,8 +32,6 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 1. Expand the **Cluster Essentials for VMWare Tanzu** section, and click release `1.10.0`.
 
-1. Select the **I agree to Terms and Conditions** check box.
-
 1. Retrieve your Broadcom registry API token:
 
     1. Click the Token Download icon next to the Cluster Essentials version you want to
@@ -52,7 +50,9 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 
 1. Click the `1.10.0`.
+
 1. Select the **I agree to Terms and Conditions** check box.
+
 1. Choose a download according to your Kubernetes provider and operating system:
 
     - For macOS, download `tanzu-cluster-essentials-darwin-amd64-1.10.0.tgz`.
