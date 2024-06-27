@@ -51,6 +51,7 @@ For all other clusters, install Cluster Essentials using the following steps.
         Where `API-TOKEN` is your token from the Broadcom Support Portal.
 
 1. Click the `1.9.1`.
+1. Select the **I agree to Terms and Conditions** check box.
 1. Choose a download according to your Kubernetes provider and operating system:
 
     - For macOS, download `tanzu-cluster-essentials-darwin-amd64-1.9.1.tgz`.
