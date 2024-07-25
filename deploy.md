@@ -30,7 +30,7 @@ For all other clusters, install Cluster Essentials using the following steps.
 
 1. Go to [Cluster Essentials for VMware Tanzu](https://support.broadcom.com/group/ecx/productdownloads?subfamily=Cluster+Essentials+for+VMware+Tanzu) in Tanzu > My Downloads.
 
-1. Expand the **Cluster Essentials for VMWare Tanzu** section, and click release `1.10.0`.
+1. Expand the **Cluster Essentials for VMWare Tanzu** section.
 
 1. Retrieve your Broadcom registry API token:
 
@@ -49,7 +49,7 @@ For all other clusters, install Cluster Essentials using the following steps.
         Where `API-TOKEN` is your token from the Broadcom Support Portal.
 
 
-1. Click the `1.10.0`.
+1. Click **1.10.0**.
 
 1. Select the **I agree to Terms and Conditions** check box.
 
