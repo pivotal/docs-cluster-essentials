@@ -48,7 +48,6 @@ For all other clusters, install Cluster Essentials using the following steps.
 
         Where `API-TOKEN` is your token from the Broadcom Support Portal.
 
-
 1. Click **1.10.0**.
 
 1. Select the **I agree to Terms and Conditions** check box.
