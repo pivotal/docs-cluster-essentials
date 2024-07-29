@@ -8,7 +8,7 @@ This topic contains release notes for Cluster Essentials for VMware Tanzu. A new
 
 ### <a id='1-9-1-resolved-issues'></a> Resolved Issues
 
-- Updates **kapp-controller to v0.51.1**. For a full list of new features, see the
+- Updates **kapp-controller to v0.51.1**. For a full list of fixes, see the
   [kapp-controller release notes](https://github.com/carvel-dev/kapp-controller/releases/tag/v0.51.1).
 
 - Updates **secretgen-controller to v0.17.3**.
