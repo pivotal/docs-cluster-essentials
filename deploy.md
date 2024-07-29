@@ -1,6 +1,6 @@
-# Deploying Cluster Essentials v1.9
+# Deploying Cluster Essentials v1.9.1
 
-This topic tells you how to install, upgrade, and uninstall Cluster Essentials v1.9.
+This topic tells you how to install, upgrade, and uninstall Cluster Essentials v1.9.1.
 
 ## <a id='supported-kube'></a> Supported Kubernetes versions
 
@@ -298,7 +298,7 @@ Configure and run `install.bat`, which installs `kapp-controller` and `secretgen
 Cluster Essentials components (such as `kapp-controller` and `secretgen-controller`) cannot be upgraded on clusters provisioned using VMware Tanzu Kubernetes Grid and VMware Tanzu Mission Control.
 
 For all other clusters, if you already have Cluster Essentials v1.0 or later installed on your target
-cluster, you can upgrade to Cluster Essentials v1.9 using the following steps.
+cluster, you can upgrade to Cluster Essentials v1.9.1 using the following steps.
 Running this upgrade updates the `kapp-controller` version on your cluster to `v0.51.1` and `secretgen-controller` version to `v0.17.3`.
 
 1. Follow the steps in [Download artifacts from the Broadcom Support Portal](#download) and
