@@ -86,7 +86,7 @@ For all other clusters, install Cluster Essentials using the following steps.
         ```console
         $ cd tanzu-cluster-essentials
 
-        $ IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com \
+        $ IMGPKG_REGISTRY_HOSTNAME=cluster-essentials.packages.broadcom.com \
           IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME \
           IMGPKG_REGISTRY_PASSWORD=${MY_BROADCOM_SUPPORT_ACCESS_TOKEN} \
           ./imgpkg copy \
@@ -104,7 +104,7 @@ For all other clusters, install Cluster Essentials using the following steps.
         ```console
         cd tanzu-cluster-essentials
 
-        set IMGPKG_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+        set IMGPKG_REGISTRY_HOSTNAME=cluster-essentials.packages.broadcom.com
         set IMGPKG_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
         set /p IMGPKG_REGISTRY_PASSWORD=password:
         :: Interactively enter $MY_BROADCOM_SUPPORT_ACCESS_TOKEN
@@ -165,7 +165,7 @@ Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-
 
     ```console
     export INSTALL_BUNDLE=cluster-essentials.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:e614ab1dfa5c194d537b1257677b1334939575bdece9d3270bb7e342545a0e95
-    export INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+    export INSTALL_REGISTRY_HOSTNAME=cluster-essentials.packages.broadcom.com
     export INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
     export INSTALL_REGISTRY_PASSWORD=${MY_BROADCOM_SUPPORT_ACCESS_TOKEN}
     cd $HOME/tanzu-cluster-essentials
@@ -190,7 +190,7 @@ Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-
         --include-non-distributable-layers \
         --registry-ca-cert-path CA_PATH
 
-    $ INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:87bf0af1f6db8b449ec090416cd82a624dff97da49b975116d38e1d07050d01b \
+    $ INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:e614ab1dfa5c194d537b1257677b1334939575bdece9d3270bb7e342545a0e95 \
       INSTALL_REGISTRY_HOSTNAME=MY-REGISTRY \
       INSTALL_REGISTRY_USERNAME=MY-REGISTRY-USER \
       INSTALL_REGISTRY_PASSWORD=MY-REGISTRY-PASSWORD \
@@ -214,7 +214,7 @@ Configure and run `install.bat`, which installs `kapp-controller` and `secretgen
     cd tanzu-cluster-essentials
 
     set INSTALL_BUNDLE=cluster-essentials.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:e614ab1dfa5c194d537b1257677b1334939575bdece9d3270bb7e342545a0e95
-    set INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+    set INSTALL_REGISTRY_HOSTNAME=cluster-essentials.packages.broadcom.com
     set INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
     set /p INSTALL_REGISTRY_PASSWORD=password:
     :: Interactively enter $MY_BROADCOM_SUPPORT_ACCESS_TOKEN
@@ -241,7 +241,7 @@ Configure and run `install.bat`, which installs `kapp-controller` and `secretgen
       --include-non-distributable-layers ^
       --registry-ca-cert-path CA_PATH
 
-    set INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:87bf0af1f6db8b449ec090416cd82a624dff97da49b975116d38e1d07050d01b
+    set INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:e614ab1dfa5c194d537b1257677b1334939575bdece9d3270bb7e342545a0e95
     set INSTALL_REGISTRY_HOSTNAME=MY-REGISTRY
     set INSTALL_REGISTRY_USERNAME=MY-REGISTRY-USER
     set /p INSTALL_REGISTRY_PASSWORD=password:
@@ -288,7 +288,7 @@ Running this upgrade updates the `kapp-controller` version on your cluster to `v
         cd $HOME/tanzu-cluster-essentials
 
         export INSTALL_BUNDLE=cluster-essentials.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:e614ab1dfa5c194d537b1257677b1334939575bdece9d3270bb7e342545a0e95
-        export INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+        export INSTALL_REGISTRY_HOSTNAME=cluster-essentials.packages.broadcom.com
         export INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
         export INSTALL_REGISTRY_PASSWORD=${MY_BROADCOM_SUPPORT_ACCESS_TOKEN}
 
@@ -303,7 +303,7 @@ Running this upgrade updates the `kapp-controller` version on your cluster to `v
         cd tanzu-cluster-essentials
 
         set INSTALL_BUNDLE=cluster-essentials.packages.broadcom.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:e614ab1dfa5c194d537b1257677b1334939575bdece9d3270bb7e342545a0e95
-        set INSTALL_REGISTRY_HOSTNAME=registry.packages.broadcom.com
+        set INSTALL_REGISTRY_HOSTNAME=cluster-essentials.packages.broadcom.com
         set INSTALL_REGISTRY_USERNAME=BROADCOM-REGISTRY-USERNAME
         set /p INSTALL_REGISTRY_PASSWORD=password:
         :: Interactively enter $MY_BROADCOM_SUPPORT_ACCESS_TOKEN
