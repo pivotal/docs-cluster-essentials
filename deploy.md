@@ -198,7 +198,7 @@ Configure and run `install.sh`, which installs `kapp-controller` and `secretgen-
         --include-non-distributable-layers \
         --registry-ca-cert-path CA_PATH
 
-    $ INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:678c20e14e1065c6a97828632d02b0716ef453e2c9b3c5e1ea0dba1817bd8125 \
+    $ INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:267c635556b060fb917d1b9165bbbc5c5b2f3bb576f2ca7c8ec61d1b7b465fbc \
       INSTALL_REGISTRY_HOSTNAME=MY-REGISTRY \
       INSTALL_REGISTRY_USERNAME=MY-REGISTRY-USER \
       INSTALL_REGISTRY_PASSWORD=MY-REGISTRY-PASSWORD \
@@ -261,7 +261,7 @@ Configure and run `install.bat`, which installs `kapp-controller` and `secretgen
       --include-non-distributable-layers ^
       --registry-ca-cert-path CA_PATH
 
-    set INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:678c20e14e1065c6a97828632d02b0716ef453e2c9b3c5e1ea0dba1817bd8125
+    set INSTALL_BUNDLE=MY-REGISTRY/cluster-essentials-bundle@sha256:267c635556b060fb917d1b9165bbbc5c5b2f3bb576f2ca7c8ec61d1b7b465fbc
     set INSTALL_REGISTRY_HOSTNAME=MY-REGISTRY
     set INSTALL_REGISTRY_USERNAME=MY-REGISTRY-USER
     set /p INSTALL_REGISTRY_PASSWORD=password:
