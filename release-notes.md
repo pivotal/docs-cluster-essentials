@@ -8,11 +8,11 @@ This topic contains release notes for Cluster Essentials for VMware Tanzu. A new
 
 ### <a id='1-10-new-features'></a> New features
 
-- Added partial support for DownwardsAPI with kctrl package release.
+- Adds partial support for Downward API with the kctrl package release.
 
-- Add defaults for version flag while installing packages using kctrl.
+- Adds defaults for the version flag while installing packages using kctrl.
 
-- Adds the ability to force HTTP Basic when fetching from git repos.
+- Adds the ability to force HTTP Basic when fetching from Git repos.
 
 - Updates **kapp-controller to v0.53.0**. For a full list of new features, see the
   [kapp-controller release notes](https://github.com/carvel-dev/kapp-controller/releases/tag/v0.53.0).
